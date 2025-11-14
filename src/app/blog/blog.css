@@ -1,0 +1,33 @@
+.blog-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+}
+
+.post {
+
+
+    width: calc(25% - 15px); /* 4 cards per row with gap consideration */
+    min-width: 250px;
+    
+}
+
+@media screen and (max-width: 1280px) {
+  .post {
+    width: calc(33.33% - 15px); /* 3 cards per row */
+  }
+}
+
+
+@media screen and (max-width: 992px) {
+  .post {
+    width: calc(50% - 10px); /* 2 cards per row */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .post {
+    width: 100%; /* 1 card per row */
+  }
+}

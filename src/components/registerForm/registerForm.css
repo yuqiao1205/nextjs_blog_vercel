@@ -1,0 +1,33 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 30px;
+}
+
+.form input{
+  padding: 20px;
+  background-color: var(--background);
+  color: var(--textColor);
+  border: none;
+  border-radius: 5px;
+}
+
+.form button{
+  padding: 20px;
+  cursor: pointer;
+  background-color: var(--btn);
+  color: var(--textColor);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.error{
+  color: red;
+  font-size: 14px;
+}
+.success{
+  color: green;
+  font-size: 14px;
+}

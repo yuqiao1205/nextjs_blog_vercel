@@ -1,0 +1,70 @@
+.singlepage-container {
+display: flex;
+  gap: 100px;
+ 
+}
+
+.img-container {
+ flex: 1;
+  position: relative;
+  height: 90vh;
+  max-width: 500px; /* make it tall and narrow */
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.image {
+object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.text-container {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap:50px;
+}
+
+.singlepage-title {
+  font-size: 64px;
+}
+
+.singlepage-details {
+  display: flex;
+  gap: 25px;
+}
+
+.detail-title{
+    font-weight: bold;
+}
+
+.detail-value{
+    color: rgb(219, 140, 29);
+    font-size: 14px;
+}
+
+.author-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.details-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.singlepage-content{
+    font-size: 20px;
+}
+
+
+@media (max-width:768px){
+  .img-container{
+    display: none;
+  }
+}

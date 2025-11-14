@@ -1,0 +1,14 @@
+.post-user-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post-user-title{
+    color:gray;
+    font-weight: bold;
+} 
+
+.post-username {
+    font-weight: 500;
+} 

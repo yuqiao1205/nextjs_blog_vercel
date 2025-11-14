@@ -1,0 +1,20 @@
+.register-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.register-wrapper{
+  width: 500px;
+  background-color: var(--bgSoft);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+
+

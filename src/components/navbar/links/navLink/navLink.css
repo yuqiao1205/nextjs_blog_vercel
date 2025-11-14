@@ -1,0 +1,12 @@
+.navlink {
+   min-width:100px;
+    text-align: center;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 20px;
+}
+
+.active {
+ color: var(--background);
+    background-color: var(--text);
+}
