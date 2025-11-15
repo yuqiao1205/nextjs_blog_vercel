@@ -13,7 +13,8 @@ interface Post {
   created?: string;
 
 }
-
+//  fetch single post data from route api/blog/[slug],but now use getPostById from data.ts
+// because getPostById already fetch from database and vercel working in this way better
 const getData = async (slug: string) => {
   if (!slug) {
     console.error('No slug provided');
@@ -60,8 +61,8 @@ const getData = async (slug: string) => {
 // 实现动态metadata的title和描述
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  // const post = await getPostById(slug);
-  const post = await getData(slug);
+  const post = await getPostById(slug);
+  // const post = await getData(slug);
 
   if (!post) {
     return {
@@ -90,7 +91,8 @@ const SinglePostPage = async ({ params }: { params: Promise<{ slug: string }> })
   }
 
   // fetch data by using API
-  const post = await getData(slug);
+  // const post = await getData(slug);
+  const post = await getPostById(slug);
 
   if (!post) {
     return (
