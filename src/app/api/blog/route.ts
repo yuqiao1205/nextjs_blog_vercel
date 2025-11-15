@@ -1,11 +1,11 @@
 // get blog posts use GET method, create post use POST method
 import { NextResponse } from "next/server";
-import { sql } from '@vercel/postgres';
+import { getPosts, addPost } from "@/lib/data";
 import { auth } from "@/lib/auth";
 
 export const GET = async () => {
   try {
-    const { rows: posts } = await sql`SELECT * FROM posts ORDER BY created DESC`;
+    const posts = await getPosts();
     return NextResponse.json(posts);
   } catch (error) {
     console.error('Error fetching posts:', error);
@@ -27,17 +27,12 @@ export const POST = async (request: Request) => {
       return NextResponse.json({ error: 'Title and body are required' }, { status: 400 });
     }
 
-    const userId = session.user.id ? parseInt(session.user.id) : null;
+    const userId = session.user.id || null;
     const username = session.user.name || 'Admin';
-    const created = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
-    const { rows } = await sql`
-      INSERT INTO posts (title, body, userId, username, image, created)
-      VALUES (${title}, ${body}, ${userId}, ${username}, ${image || ''}, ${created})
-      RETURNING *
-    `;
+    const result = await addPost(title, body, userId, username, image);
 
-    return NextResponse.json(rows[0], { status: 201 });
+    return NextResponse.json(result.post, { status: 201 });
   } catch (error) {
     console.error('Error creating post:', error);
     return NextResponse.json({ error: 'Failed to create post' }, { status: 500 });
