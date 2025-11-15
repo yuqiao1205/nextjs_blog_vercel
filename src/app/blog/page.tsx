@@ -4,6 +4,8 @@ import './blog.css';
 import { getPosts } from '@/lib/data';
 import { url } from 'inspector';
 
+export const dynamic = "force-dynamic";
+
     // {
     //     "_id": "6917f1e94983ec5eb63587e9",
     //     "id": "6",
