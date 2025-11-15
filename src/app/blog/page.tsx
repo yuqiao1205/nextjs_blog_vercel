@@ -84,9 +84,9 @@ const getData = async () => {
 
 const BlogPage = async () => {
     // Fetch posts data from external API网站
-    const posts = await getData();
+    // const posts = await getData();
     // 获取data用我自己创建的lib文件夹下的getData函数
-    // const posts = getPosts();
+    const posts = await getPosts();
 
     if (!posts || posts.length === 0) {
         return (
@@ -98,7 +98,7 @@ const BlogPage = async () => {
     }
   return (
     <div className="blog-container">
-        {posts.map((post) => (
+        {posts.map((post: any) => (
             <div  className="post" key={post.id}>
                 <PostCard post={post} />
             </div>
