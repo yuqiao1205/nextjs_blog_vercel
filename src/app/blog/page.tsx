@@ -1,8 +1,11 @@
+
 import { baseUrl } from '@/lib/base';
 import PostCard from '@/components/PostCard/PostCard';
 import './blog.css';
 import { getPosts } from '@/lib/data';
 import { url } from 'inspector';
+
+// const baseUrl = "";
 
 export const dynamic = "force-dynamic";
 
