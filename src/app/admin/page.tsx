@@ -1,5 +1,6 @@
 "use client";
 
+import { baseUrl } from '@/lib/base';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import './admin.css';
@@ -31,7 +32,7 @@ const AdminPage = () => {
   // Fetch posts
   const fetchPosts = async () => {
     try {
-      const response = await fetch('/api/blog');
+      const response = await fetch('${baseUrl}/api/blog');
       if (response.ok) {
         const data = await response.json();
         setPosts(data);
@@ -75,7 +76,7 @@ const AdminPage = () => {
     setSuccess('');
 
     try {
-      const url = editingPost ? `/api/blog/${editingPost.id}` : '/api/blog';
+      const url = editingPost ? `${baseUrl}/api/blog/${editingPost.id}` : '${baseUrl}/api/blog';
       const method = editingPost ? 'PUT' : 'POST';
 
       const response = await fetch(url, {
@@ -118,7 +119,7 @@ const AdminPage = () => {
     if (!confirm('Are you sure you want to delete this post?')) return;
 
     try {
-      const response = await fetch(`/api/blog/${postId}`, {
+      const response = await fetch(`${baseUrl}/api/blog/${postId}`, {
         method: 'DELETE',
       });
 

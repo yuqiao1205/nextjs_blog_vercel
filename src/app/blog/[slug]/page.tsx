@@ -1,3 +1,4 @@
+import { baseUrl } from '@/lib/base';
 import Image from "next/image";
 import './singlePost.css';
 import Link from "next/link";
@@ -24,7 +25,8 @@ const getData = async (slug: string) => {
     //     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`, {
     //   cache: 'no-store'
     // });
-    const res = await fetch(`/api/blog/${slug}`, {
+
+    const res = await fetch(`${baseUrl}/api/blog/${slug}`, {
       cache: 'no-store'
     });
 

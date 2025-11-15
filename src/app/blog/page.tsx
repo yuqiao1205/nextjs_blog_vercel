@@ -1,12 +1,29 @@
+import { baseUrl } from '@/lib/base';
 import PostCard from '@/components/PostCard/PostCard';
 import './blog.css';
 import { getPosts } from '@/lib/data';
+import { url } from 'inspector';
+
+    // {
+    //     "_id": "6917f1e94983ec5eb63587e9",
+    //     "id": "6",
+    //     "title": "Robot world",
+    //     "body": "Eploring robot",
+    //     "userId": "2",
+    //     "username": "Admin",
+    //     "image": "https://images.pexels.com/photos/8849289/pexels-photo-8849289.jpeg",
+    //     "created": "2025-11-13"
+    // },
+
 
 interface Post {
-  id: string;
-  title: string;
-  body: string;
-  image?: string;
+    id: string;
+    title: string;
+    body: string;
+    image?: string;
+    created?: string;
+    userId?: string;
+    username?: string;
 }
 
 // Fetch posts data from external API网站。
@@ -16,7 +33,7 @@ const getData = async () => {
         //     cache: 'no-store'
         // });
 
-         const res = await fetch('/api/blog', {
+         const res = await fetch(`${baseUrl}/api/blog`, {
              cache: 'no-store'
          });
 
@@ -25,7 +42,7 @@ const getData = async () => {
         }
 
         const data = await res.json();
-        
+
         if (!Array.isArray(data)) {
             console.error('Invalid posts data format');
             return [];
@@ -35,15 +52,27 @@ const getData = async () => {
         //这一步确保每个 post：
 	   // id 一定是字符串类型（可能后续用在 URL 路径里）
 	   // 如果缺少 title 或 body，就填上默认值
-        return data.map(post => ({
+
+    // {
+    //     "_id": "6917f1e94983ec5eb63587e9",
+    //     "id": "6",
+    //     "title": "Robot world",
+    //     "body": "Eploring robot",
+    //     "userId": "2",
+    //     "username": "Admin",
+    //     "image": "https://images.pexels.com/photos/8849289/pexels-photo-8849289.jpeg",
+    //     "created": "2025-11-13"
+    // },
+
+       return data.map(post => ({
             id: post.id.toString(),
             title: post.title || 'Untitled',
             body: post.body || 'No content available',
             image: post.image || '',
-            created: post.created || ''
+            created: post.created || '',
         }));
     } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.error('Error fetching posts 2:', error);
         return []; // Return empty array if fetch fails
     }
 };
