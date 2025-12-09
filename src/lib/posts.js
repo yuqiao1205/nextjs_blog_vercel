@@ -4,7 +4,7 @@ const posts = [
     "title": "Exploring AI world with you111",
     "body": "Welcome Exploring AI world with you.",
     "userId": "1",
-    "username": "Lauren Peng",
+    "username": "test",
     "image": "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg",
     "created": "2024-06-10"
   },
@@ -13,7 +13,7 @@ const posts = [
     "title": "A robot's day at the beach",
     "body": "Relaxing at the sunny beach.",
     "userId": "2",
-    "username": "John Doe",
+    "username": "Admin",
     "image": "https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg",
     "created": "2024-06-12"
   },
@@ -22,7 +22,7 @@ const posts = [
     "title": "City Lights and Nights",
     "body": "The city that never sleeps.",
     "userId": "3",
-    "username": "Jane Smith",
+    "username": "yuqiao1205",
     "image": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg",
     "created": "2024-06-14"
   },
@@ -30,8 +30,8 @@ const posts = [
     "id": "4",
     "title": "Adventures in the Desert",
     "body": "Surviving the harsh desert.",
-    "userId": "4",
-    "username": "Alice Johnson",
+    "userId": "2",
+    "username": "Admin",
     "image": "https://images.pexels.com/photos/8294659/pexels-photo-8294659.jpeg",
     "created": "2024-06-16"
   },
@@ -40,7 +40,7 @@ const posts = [
     "title": "Forest Trails",
     "body": "Hiking through the dense forest.",
     "userId": "1",
-    "username": "Lauren Peng",
+    "username": "test",
     "image": "https://images.pexels.com/photos/8566526/pexels-photo-8566526.jpeg",
     "created": "2025-05-18"
   },

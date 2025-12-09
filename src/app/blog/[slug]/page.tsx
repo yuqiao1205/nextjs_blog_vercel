@@ -1,8 +1,6 @@
-import { baseUrl } from '@/lib/base';
 import Image from "next/image";
 import './singlePost.css';
 import Link from "next/link";
-import PostUser from "@/components/postUser/PostUsers";
 import { getPostById } from "@/lib/data";
 
 interface Post {
@@ -11,58 +9,14 @@ interface Post {
   body: string;
   image?: string;
   created?: string;
-
+  userId?: string;
+  username?: string;
 }
-//  fetch single post data from route api/blog/[slug],but now use getPostById from data.ts
-// because getPostById already fetch from database and vercel working in this way better
-const getData = async (slug: string) => {
-  if (!slug) {
-    console.error('No slug provided');
-    return null;
-  }
-
-  try {
-
-    //     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`, {
-    //   cache: 'no-store'
-    // });
-
-    const res = await fetch(`${baseUrl}/api/blog/${slug}`, {
-      cache: 'no-store'
-    });
-
-    if (!res.ok) {
-      if (res.status === 404) {
-        console.error(`Post with ID ${slug} not found`);
-        return null;
-      }
-      throw new Error(`Failed to fetch post with ID ${slug}`);
-    }
-
-    const data = await res.json();
-    if (!data || !data.title || !data.body) {
-      console.error(`Invalid post data for ID ${slug}`);
-      return null;
-    }
-
-    return {
-      id: data.id.toString(),
-      title: data.title,
-      body: data.body,
-      image: data.image || '',
-      created: data.created || ''
-    } as Post;
-  } catch (error) {
-    console.error('Error fetching post:', error);
-    return null;
-  }
-};
 
 // 实现动态metadata的title和描述
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const post = await getPostById(slug);
-  // const post = await getData(slug);
 
   if (!post) {
     return {
@@ -90,8 +44,7 @@ const SinglePostPage = async ({ params }: { params: Promise<{ slug: string }> })
     );
   }
 
-  // fetch data by using API
-  // const post = await getData(slug);
+  // Fetch post data directly from database
   const post = await getPostById(slug);
 
   if (!post) {
@@ -130,11 +83,10 @@ const SinglePostPage = async ({ params }: { params: Promise<{ slug: string }> })
         <div className="singlepage-details">
       
           <Image src="/noavatar.png" alt="Author" width={30} height={30} className="author-image" />
-          {/* <div className="details-text">
+          <div className="details-text">
             <span className="detail-title">Author</span>
-            <span className="detail-value">Lauren Peng</span>
-          </div> */}
-          <PostUser userId={post.id} />
+            <span className="detail-value">{post.username || "Unknown"}</span>
+          </div>
           <div className="details-text">
             <span className="detail-title">Published</span>
             <span className="detail-value">{post.created}</span>
